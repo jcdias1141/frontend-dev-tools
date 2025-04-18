@@ -1,146 +1,126 @@
-# Frontend Dev Tools
+# 🛠️ Frontend Dev Tools
 
-Repositório de ferramentas e dicas para desenvolvimento frontend baseado em 6 anos de experiência.
+Minha coleção de ferramentas essenciais.  
 
 ## 📋 Índice
-
-- [CSS](#css)
+- [Layout & CSS](#layout--css)
 - [Animações](#animações)
+- [Frameworks](#frameworks)
 - [Mídia](#mídia)
-- [Ferramentas de IA](#ferramentas-de-ia)
-- [Editores de Código](#editores-de-código)
-- [Workflows & Produtividade](#workflows--produtividade)
+- [IA & Assistência](#ia--assistência)
+- [Ambiente Dev](#ambiente-dev)
 
-## CSS
+## Layout & CSS
 
-### Flexbox & Grid
-
-```css
-/* Flexbox básico */
-.container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Grid básico */
-.grid-container {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-  gap: 20px;
-}
+### Flexboxgrid
+```html
+<div class="row">
+  <div class="col-xs-12 col-sm-6 col-md-4">Responsivo</div>
+</div>
 ```
-
-**Recursos:** [Flexbox Froggy](https://flexboxfroggy.com/), [Grid Garden](https://cssgridgarden.com/)
+Sistema de grid baseado em flexbox para layouts responsivos. [Documentação](http://flexboxgrid.com/)
 
 ### BEM CSS
-
 ```css
-/* Bloco */
-.card {}
-/* Elemento */
-.card__title {}
-/* Modificador */
-.card--featured {}
+.card {} /* Bloco */
+.card__title {} /* Elemento */
+.card--featured {} /* Modificador */
 ```
+Metodologia para nomes de classes organizados e escaláveis.
 
 ### SASS/SCSS
-
 ```scss
-// Mixin para breakpoints
 @mixin respond-to($breakpoint) {
-  @if $breakpoint == "small" {
-    @media (max-width: 576px) { @content; }
-  } @else if $breakpoint == "medium" {
-    @media (max-width: 768px) { @content; }
-  }
-}
-
-.element {
-  width: 50%;
-  @include respond-to(small) { width: 100%; }
+  @if $breakpoint == "small" { @media (max-width: 576px) { @content; } }
 }
 ```
+Pré-processador com variáveis, mixins e aninhamento.
+
+### Tailwind CSS
+```html
+<div class="max-w-sm rounded shadow-lg bg-white p-4">
+  <h2 class="text-xl font-bold mb-2">Título</h2>
+  <p class="text-gray-700">Conteúdo</p>
+</div>
+```
+Framework de classes utilitárias para desenvolvimento rápido.
 
 ## Animações
 
 ### GSAP
-
 ```javascript
-// Animação básica
-gsap.to(".element", {
+gsap.to(".elemento", {
   duration: 1,
   x: 100,
-  rotation: 360,
-  ease: "power2.inOut"
-});
-
-// ScrollTrigger
-gsap.to(".parallax-element", {
-  y: 100,
-  scrollTrigger: {
-    trigger: ".section",
-    scrub: true
-  }
+  opacity: 0.5,
+  scrollTrigger: { trigger: ".section", scrub: true }
 });
 ```
+Engine de animação profissional com controle refinado.
 
 ### AOS Animate
-
 ```html
-<div data-aos="fade-up">Anima de baixo para cima</div>
-<div data-aos="fade-down" data-aos-delay="300">Com delay</div>
+<div data-aos="fade-up" data-aos-delay="300">Anima ao entrar no viewport</div>
 ```
+Biblioteca simples para animar elementos durante o scroll.
+
+### Goo Motion Library
+```html
+<div goo-motion="fade-up" goo-duration="1">Animação baseada em GSAP para Webflow</div>
+```
+Animações sem código para Webflow usando atributos personalizados.
+
+## Frameworks
+
+### Next.js
+```javascript
+// App Router (moderno)
+// app/page.js
+export default function Home() {
+  return <h1>Hello Next.js</h1>
+}
+```
+Framework React com roteamento, SSR e otimizações de performance.
 
 ## Mídia
 
 ### Video.js
-
 ```javascript
 const player = videojs('my-video', {
   controls: true,
-  autoplay: false,
   fluid: true,
-  responsive: true
+  sources: [{ src: '/video.mp4', type: 'video/mp4' }]
 });
 ```
+Player de vídeo personalizável e responsivo.
 
-## Ferramentas de IA
+## IA & Assistência
 
 ### Claude
-- **Uso:** Geração de código, debugging, refatoração, documentação
-- **Prompts:** Forneça contexto detalhado e exemplos do resultado desejado
+Assistente de IA para geração de código, refatoração e ideação.
 
 ### Mindsurf
-- **Uso:** Sugestões de código em tempo real, assistência no debugging
+Sugestões de código em tempo real integradas ao editor.
 
 ### V0 (Vercel)
-- **Uso:** Transformação de designs em código, geração de componentes
+Transformação de designs em código React/Vue/HTML.
 
 ### ChatGPT
-- **Uso:** Revisões de código, implementações de algoritmos, brainstorming
+Assistente para revisões de código e soluções técnicas.
 
-## Editores de Código
+## Ambiente Dev
 
 ### Cursor
-- **Foco:** Integração com IA, autocompletar avançado
+Editor com recursos de IA para autocompletar e sugestões.
 
 ### VSCode
-
-**Extensões essenciais:**
-- ESLint, Prettier, Auto Rename Tag, Live Server, GitLens
-
-**Atalhos úteis:**
-- `Ctrl+P` - Navegação rápida
-- `Alt+↑/↓` - Mover linha
-- `Ctrl+D` - Selecionar próxima ocorrência
-- `Ctrl+/` - Comentar/descomentar
-
-## Workflows & Produtividade
-
-- **Git:** Branches por feature, commits semânticos
-- **Performance:** Lazy loading, otimização de imagens, code splitting
-- **CI/CD:** GitHub Actions, Vercel, Netlify
+```json
+{
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode"
+}
+```
+Extensões essenciais: ESLint, Prettier, GitLens, Live Server
 
 ---
 
